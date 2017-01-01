@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CALENDAR_DIRECTORY=$HOME/.calcurse
+
+mount-ecryptfs(){
+mount -t ecryptfs -o key=passphrase   -o ecryptfs_cipher=aes -o ecryptfs_enable_filename_crypto=y   -o  ecryptfs_passthrough -o ecryptfs_key_bytes=32  $@ $@  
+}
+mount-ecryptfs $CALENDAR_DIRECTORY
+calcurse -D $CALENDAR_DIRECTORY
+
